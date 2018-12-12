@@ -1,0 +1,12 @@
+#https://www.gitignore.io/api/django
+
+*.pyc
+*.log
+*.pot
+local_settings.py
+db.sqlite3
+__pycache__/
+/media
+/static
+.vscode
+.env
