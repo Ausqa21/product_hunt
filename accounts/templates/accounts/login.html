@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="mx-auto" style="width: 20rem">
+    <h1 class="mt-4 font-weight-normal text-center">Login Nigga!</h1><br>
+
+    {% if error %}
+    <span class="lead p-2 text-white bg-danger">{{ error }}</span><br><br>
+    {% endif %}
+
+    <form class="bg-dark text-white p-3" action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    
+    <!-- <form action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+        Username<br>
+        <input type="text" name="username"><br>
+        Password <br>
+        <input type="password" name="password1" id=""><br>
+        Confirm Password <br>
+        <input type="password" name="password2" id=""><br><br>
+        <input class="btn btn-primary" type="submit" value="Sign Up!">
+    </form> -->
+</section>
+
+{% endblock %}
