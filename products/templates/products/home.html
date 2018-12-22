@@ -1,5 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Yo! We dey welcome you, Fvck Boy Ausqa21
+<section style="width: 70%" class="py-5 mx-auto">
+    {% if products %}
+        {% for product in products %}
+            <div class="row pt-3">
+                <div class="col-md-3">
+                    <div>
+                        <a href="{% url 'detail' product.id %}"><img class="img-fluid" src="{{ product.image.url }}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>
+                        <a href="{% url 'detail' product.id %}">{{ product.title }}</a>
+                    </h3>
+                    <p>{{ product.body | truncatewords:20 }}</p>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-primary btn-lg" href="javascript:{document.getElementById('upvote{{ product.id }}').submit()}">Upvote {{ product.votes_total }}</a>
+                </div>
+            </div>
+            <form method="POST" id="upvote{{ product.id }}" action="{% url 'upvote' product.id %}">
+                {% csrf_token %}
+                <input type="hidden">
+            </form>
+        {% endfor %}
+    {% else %}
+        <strong>No products availabel. Try adding one</strong>
+    {% endif %}
+</section>
 {% endblock %}
