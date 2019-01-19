@@ -35,7 +35,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
-                        {% block create %}<li class="mr-2 nav-item"><a style="font-size: 1.4rem" href="{% url 'create' %}" class="nav-link text-white"><i class="fas fa-plus"></i></a></li>{% endblock %}
+                        {% block create %}
+                        <li class="mr-2 nav-item">
+                            <a style="font-size: 1.4rem" href="{% url 'create' %}" class="nav-link text-white">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </li>
+                        {% endblock %}
                         <li class="nav-item">
                             <a style="font-size: 1.4rem" class="nav-link text-white" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
                         </li>
@@ -45,10 +51,11 @@
                         </form>
                     {% else %}
                         <li class="nav-item">
-                            <a style="font-size: 1.4rem" class="nav-link text-white" href="{% url 'signup' %}">Sign Up<span class="sr-only">(current)</span></a>
+                            <a style="font-size: 1.2rem" class="nav-link text-white" href="{% url 'signup' %}">Signup
+                                <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a style="font-size: 1.4rem" class="nav-link text-white" href="{% url 'login' %}">Login</a>
+                            <a style="font-size: 1.2rem" class="nav-link text-white" href="{% url 'login' %}">Login</a>
                         </li>
                     {% endif %}
                     </ul>
@@ -63,7 +70,7 @@
 
     <footer class="fixed-bottom bg-dark">
       <div class="container d-flex py-2">
-        <span class="mr-auto text-white">&copy; Godric Oscar Dolphine {% now 'Y' %}</span>
+        <small class="mr-auto text-white">&copy; Godric Oscar Dolphine {% now 'Y' %}</small>
         <a href="#">Back to top</a>
       </div>
     </footer>
