@@ -10,3 +10,4 @@ __pycache__/
 /static
 .vscode
 .env
+.idea
