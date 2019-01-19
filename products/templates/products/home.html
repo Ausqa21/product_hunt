@@ -4,7 +4,7 @@
 <section style="width: 70%" class="py-5 mx-auto">
     {% if products %}
         {% for product in products %}
-            <div class="row pt-3">
+            <div style="border-radius: 5px 5px 5px 5px; box-shadow: 0px 1px 10px #888888;" class="row py-3 pr-2">
                 <div class="col-md-3">
                     <div>
                         <a href="{% url 'detail' product.id %}"><img class="img-fluid" src="{{ product.image.url }}" alt=""></a>
@@ -16,14 +16,16 @@
                     </h3>
                     <p>{{ product.body | truncatewords:20 }}</p>
                 </div>
-                <div class="col-md-2">
-                    <a class="btn btn-primary btn-lg" href="javascript:{document.getElementById('upvote{{ product.id }}').submit()}">Upvote {{ product.votes_total }}</a>
+                <div class="col-md-2 d-flex align-items-center">
+                    <a class="btn btn-primary btn-lg"
+                       href="javascript:{document.getElementById('upvote{{ product.id }}').submit()}">Upvote {{ product.votes_total }}</a>
                 </div>
             </div>
             <form method="POST" id="upvote{{ product.id }}" action="{% url 'upvote' product.id %}">
                 {% csrf_token %}
                 <input type="hidden">
             </form>
+            <br><br>
         {% endfor %}
     {% else %}
         <strong>No products availabel. Try adding one</strong>
